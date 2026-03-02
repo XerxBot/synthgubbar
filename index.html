@@ -48,10 +48,12 @@
 
         .title {
             font-family: 'Audiowide', monospace;
-            font-size: clamp(1.8rem, 8vw, 5rem);
+            font-size: 5rem;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             line-height: 1;
+            white-space: nowrap;
+            display: inline-block;
             background: linear-gradient(180deg, #fff 0%, #d4a0e0 30%, #b06cc8 60%, #6a3a80 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -221,7 +223,7 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: 0.6rem;
             font-weight: 300;
-            color: #3a2848;
+            color: #6a5878;
             letter-spacing: 0.15em;
             z-index: 1;
         }
@@ -262,6 +264,27 @@
     <div class="copyright">&copy; 2025 Jajjo Records. All rights reserved.</div>
 
     <script>
+        // --- Auto-fit title text to container width ---
+        function fitText(el) {
+            const parent = el.parentElement;
+            const maxWidth = parent.clientWidth;
+            let size = 80;
+            el.style.fontSize = size + 'px';
+            while (el.scrollWidth > maxWidth && size > 12) {
+                size -= 1;
+                el.style.fontSize = size + 'px';
+            }
+        }
+
+        const titleEl = document.querySelector('.title');
+        fitText(titleEl);
+
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() { fitText(titleEl); }, 100);
+        });
+
         // Friday March 6, 2026 at 18:00 Swedish time (CET = UTC+1)
         const target = new Date('2026-03-06T17:00:00Z');
 
