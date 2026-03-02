@@ -76,31 +76,28 @@
 
         .countdown {
             display: flex;
-            gap: 0.8rem;
+            gap: clamp(0.2rem, 1.5vw, 0.8rem);
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
             margin-bottom: 2.5rem;
             animation: fadeIn 2s ease-out 1s both;
+            width: 100%;
         }
 
         .countdown-unit {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100px;
-            flex-shrink: 0;
+            flex: 0 1 auto;
             position: relative;
         }
 
         .countdown-value {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(1.8rem, 6vw, 4.5rem);
             font-weight: 700;
             line-height: 1;
             font-variant-numeric: tabular-nums;
-            display: inline-block;
-            min-width: 2ch;
             background: linear-gradient(180deg, #e8c8f0 0%, #c890d8 50%, #8a50a0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -125,7 +122,7 @@
 
         .separator {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            font-size: clamp(1rem, 3vw, 2.8rem);
             color: #6a5080;
             align-self: flex-start;
             padding-top: 0.2rem;
@@ -206,15 +203,9 @@
             100% { opacity: 0; }
         }
 
-        @media (max-width: 480px) {
-            .countdown { gap: 0.3rem; }
-            .countdown-unit { width: 60px; }
-            .separator { font-size: clamp(1rem, 3vw, 1.5rem); }
-        }
-
-        @media (max-width: 360px) {
-            .countdown-unit { width: 50px; }
-            .countdown { gap: 0.2rem; }
+        @media (max-height: 500px) {
+            .tagline { margin-bottom: 1.5rem; }
+            .countdown { margin-bottom: 1rem; }
         }
 
         .copyright {
@@ -238,7 +229,7 @@
     <div class="vhs-flicker"></div>
 
     <div class="container">
-        <svg class="title-svg" viewBox="0 0 600 50" xmlns="http://www.w3.org/2000/svg" role="heading" aria-level="1" aria-label="Synthgubbar">
+        <svg class="title-svg" viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" role="heading" aria-level="1" aria-label="Synthgubbar">
             <defs>
                 <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stop-color="#fff"/>
@@ -247,7 +238,7 @@
                     <stop offset="100%" stop-color="#6a3a80"/>
                 </linearGradient>
             </defs>
-            <text x="300" y="42" text-anchor="middle" font-family="Orbitron, monospace" font-weight="900" font-size="48" letter-spacing="2" fill="url(#chrome)">SYNTHGUBBAR</text>
+            <text x="410" y="48" text-anchor="middle" font-family="Orbitron, monospace" font-weight="900" font-size="52" letter-spacing="4" fill="url(#chrome)">SYNTHGUBBAR</text>
         </svg>
         <p class="tagline">Something is coming</p>
         <div class="countdown" id="countdown">
