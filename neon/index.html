@@ -105,16 +105,19 @@
             position: relative;
             z-index: 1;
             padding: 2rem;
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
         }
 
         .hero-title {
-            font-size: 6rem;
+            font-size: min(8vw, 5rem);
             font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.04em;
             line-height: 1;
-            white-space: nowrap;
-            display: inline-block;
+            overflow-wrap: break-word;
+            word-break: break-word;
             animation: titlePulse 4s ease-in-out infinite;
         }
 
@@ -962,27 +965,6 @@
          SCRIPTS
          ========================================== -->
     <script>
-        // --- Auto-fit title text to container width ---
-        function fitText(el) {
-            var parent = el.parentElement;
-            var maxWidth = parent.clientWidth;
-            var size = 96;
-            el.style.fontSize = size + 'px';
-            while (el.scrollWidth > maxWidth && size > 12) {
-                size -= 1;
-                el.style.fontSize = size + 'px';
-            }
-        }
-
-        var heroTitle = document.querySelector('.hero-title');
-        if (heroTitle) fitText(heroTitle);
-
-        var fitResizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(fitResizeTimer);
-            fitResizeTimer = setTimeout(function() { if (heroTitle) fitText(heroTitle); }, 100);
-        });
-
         // --- Hero Canvas: Synthwave sun + grid + stars ---
         (function() {
             const canvas = document.getElementById('hero-bg');
