@@ -691,6 +691,13 @@
 
         body.locked {
             overflow: hidden;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+        }
+
+        body.locked .site-content {
+            display: none;
         }
 
         /* ============================================
@@ -726,6 +733,7 @@
     <div class="scanlines"></div>
     <div class="vhs-flicker"></div>
 
+    <div class="site-content">
     <!-- ==========================================
          HERO
          ========================================== -->
@@ -915,6 +923,7 @@
         </a>
         <div class="footer-line">Swedish Synthwave Since 2024</div>
     </footer>
+    </div><!-- /.site-content -->
 
     <!-- ==========================================
          SCRIPTS
@@ -1105,10 +1114,14 @@
             const gate = document.getElementById('code-gate');
             const errorMsg = document.getElementById('code-error');
 
-            // Skip gate if already unlocked this session
-            if (sessionStorage.getItem('sg-unlocked') === '1') {
+            function unlock() {
                 gate.classList.add('unlocked');
                 document.body.classList.remove('locked');
+            }
+
+            // Skip gate if already unlocked this session
+            if (sessionStorage.getItem('sg-unlocked') === '1') {
+                unlock();
                 return;
             }
 
@@ -1118,10 +1131,7 @@
                     if (entered === CODE) {
                         digits.forEach(function(d) { d.classList.add('success'); });
                         sessionStorage.setItem('sg-unlocked', '1');
-                        setTimeout(function() {
-                            gate.classList.add('unlocked');
-                            document.body.classList.remove('locked');
-                        }, 400);
+                        setTimeout(unlock, 400);
                     } else {
                         digits.forEach(function(d) { d.classList.add('error'); });
                         errorMsg.classList.add('show');
