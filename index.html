@@ -41,27 +41,18 @@
         .container {
             position: relative;
             z-index: 1;
-            padding: 2rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 800px;
         }
 
-        h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #f0e0f8;
-            position: relative;
+        .title-svg {
+            width: 90%;
+            max-width: 700px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
             animation: titlePulse 4s ease-in-out infinite;
-            white-space: nowrap;
-            display: inline-block;
-        }
-
-        h1 .chrome {
-            background: linear-gradient(180deg, #fff 0%, #d4a0e0 30%, #b06cc8 60%, #6a3a80 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             filter: drop-shadow(0 0 30px rgba(160, 80, 200, 0.4))
                    drop-shadow(0 0 60px rgba(200, 100, 160, 0.2));
         }
@@ -247,7 +238,17 @@
     <div class="vhs-flicker"></div>
 
     <div class="container">
-        <h1><span class="chrome">Synthgubbar</span></h1>
+        <svg class="title-svg" viewBox="0 0 600 50" xmlns="http://www.w3.org/2000/svg" role="heading" aria-level="1" aria-label="Synthgubbar">
+            <defs>
+                <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fff"/>
+                    <stop offset="30%" stop-color="#d4a0e0"/>
+                    <stop offset="60%" stop-color="#b06cc8"/>
+                    <stop offset="100%" stop-color="#6a3a80"/>
+                </linearGradient>
+            </defs>
+            <text x="300" y="42" text-anchor="middle" font-family="Orbitron, monospace" font-weight="900" font-size="48" letter-spacing="2" fill="url(#chrome)">SYNTHGUBBAR</text>
+        </svg>
         <p class="tagline">Something is coming</p>
         <div class="countdown" id="countdown">
             <div class="countdown-unit">
@@ -276,24 +277,6 @@
     <div class="copyright">&copy; 2025 Jajjo Records. All rights reserved.</div>
 
     <script>
-        // Auto-fit title to viewport width
-        (function() {
-            var h1 = document.querySelector('h1');
-            var container = document.querySelector('.container');
-            function fitTitle() {
-                var maxW = container.clientWidth - 10;
-                h1.style.fontSize = '5rem';
-                var size = 80; // start at 80px
-                h1.style.fontSize = size + 'px';
-                while (h1.scrollWidth > maxW && size > 10) {
-                    size -= 1;
-                    h1.style.fontSize = size + 'px';
-                }
-            }
-            fitTitle();
-            window.addEventListener('resize', fitTitle);
-        })();
-
         // Friday March 6, 2026 at 18:00 Swedish time (CET = UTC+1)
         const target = new Date('2026-03-06T17:00:00Z');
 
