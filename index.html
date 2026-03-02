@@ -4,85 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synthgubbar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0a0a0f;
+            background: #06050a;
             color: #c8b8d0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
             text-align: center;
             overflow: hidden;
         }
-        .container {
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #e0d0e8;
-            text-shadow: 0 0 30px rgba(180, 120, 200, 0.3), 0 0 60px rgba(200, 140, 100, 0.15);
-            margin-bottom: 0.5rem;
-        }
-        .tagline {
-            font-size: 0.9rem;
-            color: #7a6880;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-        }
-        .countdown {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .countdown-unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 70px;
-        }
-        .countdown-value {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 300;
-            color: #d4a574;
-            text-shadow: 0 0 20px rgba(212, 165, 116, 0.25);
-            line-height: 1;
-            font-variant-numeric: tabular-nums;
-        }
-        .countdown-label {
-            font-size: 0.65rem;
-            color: #5a4a60;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-        }
-        .separator {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: #3a2a40;
-            align-self: flex-start;
-            padding-top: 0.3rem;
-            font-weight: 200;
-        }
-        .subtitle {
-            font-size: 0.85rem;
-            color: #5a4a60;
-            letter-spacing: 0.1em;
-        }
-        .live-text {
-            font-size: 1.4rem;
-            color: #d4a574;
-            text-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
-            display: none;
-        }
+
         canvas {
             position: fixed;
             top: 0;
@@ -90,14 +29,193 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.2rem, 9vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #f0e0f8;
+            position: relative;
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+
+        h1 .chrome {
+            background: linear-gradient(180deg, #fff 0%, #d4a0e0 30%, #b06cc8 60%, #6a3a80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(160, 80, 200, 0.4))
+                   drop-shadow(0 0 60px rgba(200, 100, 160, 0.2));
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.15); }
+        }
+
+        .tagline {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #6a5878;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            margin-bottom: 3.5rem;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+            position: relative;
+        }
+
+        .countdown-value {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            background: linear-gradient(180deg, #e8c8f0 0%, #c890d8 50%, #8a50a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(160, 80, 200, 0.5));
+            transition: transform 0.15s ease;
+        }
+
+        .countdown-value.tick {
+            transform: scale(1.08);
+        }
+
+        .countdown-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #4a3858;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 0.6rem;
+        }
+
+        .separator {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: #3a2048;
+            align-self: flex-start;
+            padding-top: 0.2rem;
+            font-weight: 400;
+            animation: colonBlink 2s step-end infinite;
+        }
+
+        @keyframes colonBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: #4a3858;
+            letter-spacing: 0.15em;
+            animation: fadeIn 2s ease-out 1.5s both;
+        }
+
+        .live-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #c890d8, #d4a574, #c890d8);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scanline overlay */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
             pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.08) 2px,
+                rgba(0, 0, 0, 0.08) 4px
+            );
+        }
+
+        /* VHS flicker */
+        .vhs-flicker {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            animation: vhsFlicker 0.15s infinite;
+            opacity: 0;
+        }
+
+        @keyframes vhsFlicker {
+            0% { opacity: 0; }
+            5% { opacity: 0.02; background: rgba(160, 80, 200, 0.03); }
+            10% { opacity: 0; }
+            92% { opacity: 0; }
+            93% { opacity: 0.01; background: rgba(200, 140, 100, 0.02); }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown { gap: 0.4rem; }
+            .countdown-unit { min-width: 60px; }
         }
     </style>
 </head>
 <body>
     <canvas id="bg"></canvas>
+    <div class="scanlines"></div>
+    <div class="vhs-flicker"></div>
+
     <div class="container">
-        <h1>Synthgubbar</h1>
+        <h1><span class="chrome">Synthgubbar</span></h1>
         <p class="tagline">Something is coming</p>
         <div class="countdown" id="countdown">
             <div class="countdown-unit">
@@ -123,12 +241,14 @@
         <p class="subtitle" id="subtitle">Friday 18:00 CET</p>
         <p class="live-text" id="live-text">We are live.</p>
     </div>
+
     <script>
-        // Friday March 7, 2026 at 18:00 Swedish time (CET = UTC+1)
+        // Friday March 6, 2026 at 18:00 Swedish time (CET = UTC+1)
         const target = new Date('2026-03-06T17:00:00Z');
 
         function pad(n) { return String(n).padStart(2, '0'); }
 
+        let prevS = -1;
         function tick() {
             const now = new Date();
             const diff = target - now;
@@ -150,52 +270,181 @@
             document.getElementById('minutes').textContent = pad(m);
             document.getElementById('seconds').textContent = pad(s);
 
-            requestAnimationFrame(tick);
+            // Tick animation on seconds change
+            if (s !== prevS) {
+                prevS = s;
+                const el = document.getElementById('seconds');
+                el.classList.add('tick');
+                setTimeout(() => el.classList.remove('tick'), 150);
+            }
         }
 
         tick();
-        setInterval(tick, 1000);
+        setInterval(tick, 100);
 
-        // Subtle floating particles
+        // --- Canvas: Synthwave sun + grid + stars ---
         const canvas = document.getElementById('bg');
         const ctx = canvas.getContext('2d');
-        let particles = [];
+        let W, H;
 
         function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
         }
         resize();
         window.addEventListener('resize', resize);
 
-        for (let i = 0; i < 40; i++) {
-            particles.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                r: Math.random() * 1.5 + 0.5,
-                dx: (Math.random() - 0.5) * 0.3,
-                dy: (Math.random() - 0.5) * 0.3,
-                alpha: Math.random() * 0.15 + 0.05
+        // Stars
+        const stars = [];
+        for (let i = 0; i < 120; i++) {
+            stars.push({
+                x: Math.random(),
+                y: Math.random() * 0.55,
+                r: Math.random() * 1.2 + 0.3,
+                twinkle: Math.random() * Math.PI * 2,
+                speed: Math.random() * 0.5 + 0.5
             });
         }
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (const p of particles) {
-                p.x += p.dx;
-                p.y += p.dy;
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
+        // Grid params
+        const gridLines = 30;
+        const gridSpeed = 0.00015;
+        let gridOffset = 0;
+
+        function drawFrame(time) {
+            ctx.clearRect(0, 0, W, H);
+
+            const sunCY = H * 0.58;
+            const sunR = Math.min(W, H) * 0.18;
+            const horizonY = H * 0.62;
+
+            // Sky gradient
+            const sky = ctx.createLinearGradient(0, 0, 0, horizonY);
+            sky.addColorStop(0, '#06050a');
+            sky.addColorStop(0.4, '#0e0818');
+            sky.addColorStop(0.7, '#1a0a28');
+            sky.addColorStop(1, '#2a1038');
+            ctx.fillStyle = sky;
+            ctx.fillRect(0, 0, W, horizonY);
+
+            // Stars
+            for (const s of stars) {
+                const flicker = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(time * 0.001 * s.speed + s.twinkle));
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(180, 140, 200, ${p.alpha})`;
+                ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(200, 180, 220, ${flicker * 0.5})`;
                 ctx.fill();
             }
-            requestAnimationFrame(drawParticles);
+
+            // Sun
+            const sunGrad = ctx.createRadialGradient(W / 2, sunCY, 0, W / 2, sunCY, sunR);
+            sunGrad.addColorStop(0, 'rgba(220, 160, 100, 0.9)');
+            sunGrad.addColorStop(0.3, 'rgba(200, 100, 80, 0.7)');
+            sunGrad.addColorStop(0.6, 'rgba(160, 60, 120, 0.5)');
+            sunGrad.addColorStop(1, 'rgba(80, 20, 80, 0)');
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, 0, W, horizonY);
+            ctx.clip();
+
+            ctx.beginPath();
+            ctx.arc(W / 2, sunCY, sunR, 0, Math.PI * 2);
+            ctx.fillStyle = sunGrad;
+            ctx.fill();
+
+            // Sun horizontal stripe cutouts
+            const stripeCount = 8;
+            const stripeH = sunR * 0.035;
+            for (let i = 0; i < stripeCount; i++) {
+                const frac = (i + 1) / (stripeCount + 1);
+                const sy = sunCY - sunR + frac * sunR * 2;
+                const gap = stripeH * (1 + i * 0.5);
+                ctx.clearRect(0, sy, W, gap);
+                // Refill sky behind cleared stripe
+                ctx.fillStyle = `rgba(15, 8, 25, ${0.6 + i * 0.05})`;
+                ctx.fillRect(0, sy, W, gap);
+            }
+
+            ctx.restore();
+
+            // Sun glow on horizon
+            const glowGrad = ctx.createRadialGradient(W / 2, horizonY, 0, W / 2, horizonY, sunR * 2.5);
+            glowGrad.addColorStop(0, 'rgba(180, 80, 140, 0.15)');
+            glowGrad.addColorStop(0.5, 'rgba(100, 40, 100, 0.05)');
+            glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = glowGrad;
+            ctx.fillRect(0, horizonY - sunR * 2, W, sunR * 4);
+
+            // Ground plane gradient
+            const ground = ctx.createLinearGradient(0, horizonY, 0, H);
+            ground.addColorStop(0, '#1a0828');
+            ground.addColorStop(1, '#06050a');
+            ctx.fillStyle = ground;
+            ctx.fillRect(0, horizonY, W, H - horizonY);
+
+            // Perspective grid
+            gridOffset = (time * gridSpeed) % 1;
+
+            ctx.strokeStyle = 'rgba(120, 50, 150, 0.25)';
+            ctx.lineWidth = 1;
+
+            // Horizontal lines (perspective)
+            for (let i = 0; i < gridLines; i++) {
+                const t = (i + gridOffset) / gridLines;
+                const perspective = Math.pow(t, 2.5);
+                const y = horizonY + perspective * (H - horizonY);
+                const alpha = perspective * 0.4;
+                ctx.strokeStyle = `rgba(120, 50, 150, ${alpha})`;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(W, y);
+                ctx.stroke();
+            }
+
+            // Vertical lines (converging to vanishing point)
+            const vLines = 20;
+            const vanishX = W / 2;
+            for (let i = -vLines; i <= vLines; i++) {
+                const spread = (i / vLines);
+                const bottomX = vanishX + spread * W * 1.2;
+                const alpha = 0.15 * (1 - Math.abs(spread) * 0.6);
+                ctx.strokeStyle = `rgba(120, 50, 150, ${alpha})`;
+                ctx.beginPath();
+                ctx.moveTo(vanishX, horizonY);
+                ctx.lineTo(bottomX, H);
+                ctx.stroke();
+            }
+
+            // Horizon glow line
+            const horizGlow = ctx.createLinearGradient(0, 0, W, 0);
+            horizGlow.addColorStop(0, 'rgba(120, 50, 150, 0)');
+            horizGlow.addColorStop(0.3, 'rgba(180, 80, 160, 0.3)');
+            horizGlow.addColorStop(0.5, 'rgba(200, 100, 160, 0.5)');
+            horizGlow.addColorStop(0.7, 'rgba(180, 80, 160, 0.3)');
+            horizGlow.addColorStop(1, 'rgba(120, 50, 150, 0)');
+            ctx.strokeStyle = horizGlow;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, horizonY);
+            ctx.lineTo(W, horizonY);
+            ctx.stroke();
+
+            // Soft bloom line
+            ctx.shadowColor = 'rgba(180, 80, 160, 0.4)';
+            ctx.shadowBlur = 15;
+            ctx.strokeStyle = 'rgba(180, 80, 160, 0.15)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, horizonY);
+            ctx.lineTo(W, horizonY);
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            requestAnimationFrame(drawFrame);
         }
-        drawParticles();
+
+        requestAnimationFrame(drawFrame);
     </script>
 </body>
 </html>
