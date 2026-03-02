@@ -13,7 +13,7 @@
     <meta property="og:description" content="Swedish synthwave quartet. Something is coming.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -46,12 +46,16 @@
             max-width: 800px;
         }
 
-        .title-svg {
-            width: 90%;
-            max-width: 700px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        .title {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.8rem, 8vw, 5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1;
+            background: linear-gradient(180deg, #fff 0%, #d4a0e0 30%, #b06cc8 60%, #6a3a80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             animation: titlePulse 4s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(160, 80, 200, 0.4))
                    drop-shadow(0 0 60px rgba(200, 100, 160, 0.2));
@@ -93,7 +97,7 @@
         }
 
         .countdown-value {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Audiowide', monospace;
             font-size: clamp(1.8rem, 6vw, 4.5rem);
             font-weight: 700;
             line-height: 1;
@@ -121,7 +125,7 @@
         }
 
         .separator {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Audiowide', monospace;
             font-size: clamp(1rem, 3vw, 2.8rem);
             color: #6a5080;
             align-self: flex-start;
@@ -145,7 +149,7 @@
         }
 
         .live-text {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Audiowide', monospace;
             font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(90deg, #c890d8, #d4a574, #c890d8);
@@ -229,17 +233,7 @@
     <div class="vhs-flicker"></div>
 
     <div class="container">
-        <svg class="title-svg" viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" role="heading" aria-level="1" aria-label="Synthgubbar">
-            <defs>
-                <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#fff"/>
-                    <stop offset="30%" stop-color="#d4a0e0"/>
-                    <stop offset="60%" stop-color="#b06cc8"/>
-                    <stop offset="100%" stop-color="#6a3a80"/>
-                </linearGradient>
-            </defs>
-            <text x="410" y="48" text-anchor="middle" font-family="Orbitron, monospace" font-weight="900" font-size="52" letter-spacing="4" fill="url(#chrome)">SYNTHGUBBAR</text>
-        </svg>
+        <h1 class="title">Synthgubbar</h1>
         <p class="tagline">Something is coming</p>
         <div class="countdown" id="countdown">
             <div class="countdown-unit">

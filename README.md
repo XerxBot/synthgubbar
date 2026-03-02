@@ -85,7 +85,7 @@ The Neon Overdrive game link points to `play.synthgubbar.com` (subdomain setup p
 
 ## Fonts
 
-- **Orbitron** — headings, countdown, song titles
+- **Audiowide** — headings, countdown, song titles
 - **Rajdhani** — body text, labels
 
 Both loaded from Google Fonts. No local font files needed.
