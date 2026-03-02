@@ -1,6 +1,6 @@
 # Synthgubbar.com
 
-Band homepage for **Synthgubbar** — a Swedish synthwave duo.
+Band homepage for **Synthgubbar** — a Swedish synthwave quartet.
 
 ## Site Structure
 
