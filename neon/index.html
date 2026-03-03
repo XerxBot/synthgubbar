@@ -494,6 +494,106 @@
         }
 
         /* ============================================
+           MERCH SECTION
+           ============================================ */
+        .merch-section {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .merch-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg,
+                #06050a 0%,
+                rgba(30, 18, 12, 0.6) 50%,
+                #06050a 100%
+            );
+            z-index: 0;
+        }
+
+        .merch-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .merch-inner.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .merch-badge {
+            display: inline-block;
+            font-family: 'Audiowide', monospace;
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: #7a6890;
+            border: 1px solid #2a1838;
+            padding: 0.4rem 1rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .merch-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            background: linear-gradient(180deg, #f0d0a0, #d4a574, #a07848);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .merch-desc {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #8a7898;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .merch-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.12), rgba(160, 120, 72, 0.08));
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 50px;
+            color: #d4a574;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .merch-link:hover {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.22), rgba(160, 120, 72, 0.15));
+            border-color: rgba(212, 165, 116, 0.6);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
            FOOTER
            ============================================ */
         .site-footer {
@@ -552,6 +652,14 @@
 
         .footer-link--youtube:hover {
             color: #ff4444;
+        }
+
+        .footer-link--shop {
+            color: #6a5878;
+        }
+
+        .footer-link--shop:hover {
+            color: #d4a574;
         }
 
         .footer-line {
@@ -943,6 +1051,21 @@
     </section>
 
     <!-- ==========================================
+         MERCH
+         ========================================== -->
+    <section class="merch-section">
+        <div class="merch-inner" data-animate>
+            <div class="merch-badge">Merch</div>
+            <h2 class="merch-title">Wear the Frequency</h2>
+            <p class="merch-desc">Official Synthgubbar merchandise. Retro-futuristic designs on premium cotton — wear the sound.</p>
+            <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="merch-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                Visit Shop
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================
          FOOTER
          ========================================== -->
     <footer class="site-footer">
@@ -955,6 +1078,10 @@
             <a href="https://www.youtube.com/@Synthgubbar" target="_blank" rel="noopener" class="footer-link footer-link--youtube">
                 <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 YouTube
+            </a>
+            <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="footer-link footer-link--shop">
+                <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                Shop
             </a>
         </div>
         <div class="footer-line">&copy; 2025 Jajjo Records. All rights reserved.</div>
