@@ -524,9 +524,11 @@
             position: relative;
             z-index: 1;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         /* Pixel character container */
@@ -534,6 +536,7 @@
             position: relative;
             transform: translateX(-120vw);
             cursor: pointer;
+            flex-shrink: 0;
         }
 
         .pixel-guy.run-in {
@@ -658,10 +661,11 @@
             text-transform: uppercase;
         }
 
-        /* Shop CTA below character */
+        /* Shop CTA next to character */
         .merch-cta {
             opacity: 0;
             transform: translateY(15px);
+            align-self: center;
         }
 
         .merch-cta.show {
