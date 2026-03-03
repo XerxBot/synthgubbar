@@ -78,9 +78,10 @@ Replace with same filename to update. Keep images square (640x640 recommended).
 The Neon Overdrive game link points to `play.synthgubbar.com` (subdomain setup pending).
 
 ## Merch Shop
-- `/shop/` — Mockup merch page with t-shirt designs
+- **Live shop:** https://shop.synthgubbar.com/
+- **On-site promo:** Pixel art character in the merch section runs in and says "Hey! Buy my tee!" — clickable for funny random quotes
+- `/shop/` — Legacy mockup page with t-shirt designs (replaced by external shop)
 - Fulfillment via [Spreadshirt](https://www.spreadshirt.com/) (do NOT expose to customers)
-- When ready: replace "Coming Soon" buttons with Spreadshirt product links
 - T-shirt mockup masters stored in `shop/` as `*_master.png`
 
 ## Fonts
