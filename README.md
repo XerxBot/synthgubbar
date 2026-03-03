@@ -80,9 +80,7 @@ The Neon Overdrive game link points to `play.synthgubbar.com` (subdomain setup p
 ## Merch Shop
 - **Live shop:** https://shop.synthgubbar.com/
 - **On-site promo:** Pixel art character in the merch section runs in and says "Hey! Buy my tee!" — clickable for funny random quotes
-- `/shop/` — Legacy mockup page with t-shirt designs (replaced by external shop)
 - Fulfillment via [Spreadshirt](https://www.spreadshirt.com/) (do NOT expose to customers)
-- T-shirt mockup masters stored in `shop/` as `*_master.png`
 
 ## Fonts
 
