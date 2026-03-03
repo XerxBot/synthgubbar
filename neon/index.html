@@ -494,7 +494,7 @@
         }
 
         /* ============================================
-           MERCH SECTION
+           MERCH SECTION — PIXEL CHARACTER
            ============================================ */
         .merch-section {
             position: relative;
@@ -520,55 +520,159 @@
             z-index: 0;
         }
 
-        .merch-inner {
+        .merch-scene {
             position: relative;
             z-index: 1;
-            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Pixel character container */
+        .pixel-guy {
+            position: relative;
+            transform: translateX(-120vw);
+            cursor: pointer;
+        }
+
+        .pixel-guy.run-in {
+            animation: characterRunIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        @keyframes characterRunIn {
+            0% { transform: translateX(-120vw); }
+            70% { transform: translateX(10px); }
+            85% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* The pixel art character — built with box-shadow pixels */
+        .pixel-sprite {
+            width: 6px;
+            height: 6px;
+            background: transparent;
+            /* 16x24 pixel character, each pixel is 6x6px */
+            /* Retro synthwave dude with highlighted t-shirt */
+            box-shadow:
+                /* Hair - magenta/purple */
+                30px 0 0 #c44dff, 36px 0 0 #c44dff, 42px 0 0 #c44dff, 48px 0 0 #c44dff, 54px 0 0 #c44dff,
+                24px 6px 0 #c44dff, 30px 6px 0 #a030d0, 36px 6px 0 #a030d0, 42px 6px 0 #a030d0, 48px 6px 0 #a030d0, 54px 6px 0 #c44dff,
+                /* Face - skin tone */
+                30px 12px 0 #e8b88a, 36px 12px 0 #e8b88a, 42px 12px 0 #e8b88a, 48px 12px 0 #e8b88a,
+                30px 18px 0 #e8b88a, 36px 18px 0 #1a1028, 42px 18px 0 #e8b88a, 48px 18px 0 #1a1028,
+                30px 24px 0 #e8b88a, 36px 24px 0 #e8b88a, 42px 24px 0 #d4a070, 48px 24px 0 #e8b88a,
+                /* Neck */
+                36px 30px 0 #e8b88a, 42px 30px 0 #e8b88a,
+                /* T-shirt - glowing amber (the merch!) */
+                18px 36px 0 #d4a574, 24px 36px 0 #d4a574, 30px 36px 0 #f0c080, 36px 36px 0 #f0c080, 42px 36px 0 #f0c080, 48px 36px 0 #f0c080, 54px 36px 0 #d4a574, 60px 36px 0 #d4a574,
+                18px 42px 0 #d4a574, 24px 42px 0 #f0c080, 30px 42px 0 #ffe0a0, 36px 42px 0 #f0c080, 42px 42px 0 #f0c080, 48px 42px 0 #ffe0a0, 54px 42px 0 #f0c080, 60px 42px 0 #d4a574,
+                18px 48px 0 #d4a574, 24px 48px 0 #f0c080, 30px 48px 0 #f0c080, 36px 48px 0 #ffe0a0, 42px 48px 0 #ffe0a0, 48px 48px 0 #f0c080, 54px 48px 0 #f0c080, 60px 48px 0 #d4a574,
+                24px 54px 0 #d4a574, 30px 54px 0 #d4a574, 36px 54px 0 #f0c080, 42px 54px 0 #f0c080, 48px 54px 0 #d4a574, 54px 54px 0 #d4a574,
+                /* Arms - skin + pointing right arm */
+                6px 36px 0 #e8b88a, 12px 36px 0 #e8b88a,
+                6px 42px 0 #e8b88a,
+                66px 36px 0 #e8b88a, 72px 36px 0 #e8b88a,
+                72px 42px 0 #e8b88a, 78px 42px 0 #e8b88a,
+                /* Hand pointing at shirt */
+                0px 42px 0 #e8b88a,
+                /* Pants - dark purple */
+                30px 60px 0 #2a1838, 36px 60px 0 #2a1838, 42px 60px 0 #2a1838, 48px 60px 0 #2a1838,
+                30px 66px 0 #2a1838, 36px 66px 0 #2a1838, 42px 66px 0 #2a1838, 48px 66px 0 #2a1838,
+                30px 72px 0 #1a1028, 36px 72px 0 #1a1028, 42px 72px 0 #1a1028, 48px 72px 0 #1a1028,
+                /* Legs */
+                30px 78px 0 #1a1028, 36px 78px 0 #1a1028, 42px 78px 0 #1a1028, 48px 78px 0 #1a1028,
+                /* Shoes - neon accent */
+                24px 84px 0 #c44dff, 30px 84px 0 #c44dff, 36px 84px 0 #c44dff, 42px 84px 0 #c44dff, 48px 84px 0 #c44dff, 54px 84px 0 #c44dff;
+            /* Glow effect on the t-shirt area */
+            filter: drop-shadow(0 0 8px rgba(240, 192, 128, 0.4));
+        }
+
+        /* T-shirt glow pulse */
+        .pixel-guy.run-in .pixel-sprite {
+            animation: shirtGlow 2s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes shirtGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(240, 192, 128, 0.3)); }
+            50% { filter: drop-shadow(0 0 18px rgba(240, 192, 128, 0.7)); }
+        }
+
+        /* Speech bubble */
+        .speech-bubble {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 12, 35, 0.9);
+            border: 2px solid #d4a574;
+            border-radius: 12px;
+            padding: 0.6rem 1.2rem;
+            white-space: nowrap;
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
         }
 
-        .merch-inner.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .pixel-guy.run-in .speech-bubble {
+            animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards;
+            pointer-events: auto;
         }
 
-        .merch-badge {
-            display: inline-block;
+        @keyframes bubblePop {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+
+        /* Bubble arrow */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 10px solid #d4a574;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid rgba(20, 12, 35, 0.9);
+            z-index: 1;
+        }
+
+        .speech-text {
             font-family: 'Audiowide', monospace;
-            font-size: 0.6rem;
-            font-weight: 400;
-            letter-spacing: 0.5em;
+            font-size: 0.75rem;
+            color: #f0c080;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: #7a6890;
-            border: 1px solid #2a1838;
-            padding: 0.4rem 1rem;
-            border-radius: 2px;
-            margin-bottom: 1.5rem;
         }
 
-        .merch-title {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            background: linear-gradient(180deg, #f0d0a0, #d4a574, #a07848);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Shop CTA below character */
+        .merch-cta {
+            opacity: 0;
+            transform: translateY(15px);
         }
 
-        .merch-desc {
-            font-size: 1rem;
-            font-weight: 300;
-            color: #8a7898;
-            line-height: 1.7;
-            margin-bottom: 2rem;
+        .merch-cta.show {
+            animation: ctaFadeIn 0.6s ease 1.8s forwards;
         }
 
-        .merch-link {
+        @keyframes ctaFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .merch-cta-link {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
@@ -586,7 +690,7 @@
             transition: all 0.3s ease;
         }
 
-        .merch-link:hover {
+        .merch-cta-link:hover {
             background: linear-gradient(135deg, rgba(212, 165, 116, 0.22), rgba(160, 120, 72, 0.15));
             border-color: rgba(212, 165, 116, 0.6);
             box-shadow: 0 0 30px rgba(212, 165, 116, 0.15);
@@ -1051,17 +1155,22 @@
     </section>
 
     <!-- ==========================================
-         MERCH
+         MERCH — PIXEL CHARACTER
          ========================================== -->
-    <section class="merch-section">
-        <div class="merch-inner" data-animate>
-            <div class="merch-badge">Merch</div>
-            <h2 class="merch-title">Wear the Frequency</h2>
-            <p class="merch-desc">Official Synthgubbar merchandise. Retro-futuristic designs on premium cotton — wear the sound.</p>
-            <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="merch-link">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                Visit Shop
+    <section class="merch-section" id="merch-section">
+        <div class="merch-scene">
+            <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="pixel-guy" id="pixel-guy">
+                <div class="speech-bubble">
+                    <span class="speech-text">Hey! Buy my tee!</span>
+                </div>
+                <div class="pixel-sprite"></div>
             </a>
+            <div class="merch-cta" id="merch-cta">
+                <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="merch-cta-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    Visit Shop
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1268,6 +1377,27 @@
             document.querySelectorAll('[data-animate]').forEach(function(el) {
                 observer.observe(el);
             });
+        })();
+
+        // --- Pixel character run-in animation ---
+        (function() {
+            var merchSection = document.getElementById('merch-section');
+            var pixelGuy = document.getElementById('pixel-guy');
+            var merchCta = document.getElementById('merch-cta');
+            if (!merchSection || !pixelGuy) return;
+
+            var triggered = false;
+            var merchObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !triggered) {
+                        triggered = true;
+                        pixelGuy.classList.add('run-in');
+                        if (merchCta) merchCta.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            merchObserver.observe(merchSection);
         })();
 
         // --- Access Code Gate ---
