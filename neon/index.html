@@ -1383,11 +1383,12 @@
             });
         })();
 
-        // --- Pixel character run-in animation ---
+        // --- Pixel character run-in animation + click quotes ---
         (function() {
             var merchSection = document.getElementById('merch-section');
             var pixelGuy = document.getElementById('pixel-guy');
             var merchCta = document.getElementById('merch-cta');
+            var speechText = pixelGuy ? pixelGuy.querySelector('.speech-text') : null;
             if (!merchSection || !pixelGuy) return;
 
             var triggered = false;
@@ -1402,6 +1403,50 @@
             }, { threshold: 0.3 });
 
             merchObserver.observe(merchSection);
+
+            // Click quotes
+            var quotes = [
+                'Oh, that tickles!',
+                'Hey! Buy my tee!',
+                'Looking good, human!',
+                'I only wear synthwave',
+                'Stop poking me!',
+                '100% neon cotton',
+                'This shirt glows at night',
+                'One size fits all... almost',
+                'Made in the grid',
+                'Retro never dies',
+                'Do I look 8-bit to you?',
+                'Wear the frequency!'
+            ];
+            var lastQuote = -1;
+            var clickTimer = null;
+
+            pixelGuy.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (!speechText) return;
+
+                // Pick a random quote (avoid repeating the same one)
+                var idx;
+                do { idx = Math.floor(Math.random() * quotes.length); } while (idx === lastQuote);
+                lastQuote = idx;
+
+                speechText.textContent = quotes[idx];
+
+                // Bounce the bubble
+                var bubble = pixelGuy.querySelector('.speech-bubble');
+                if (bubble) {
+                    bubble.style.animation = 'none';
+                    bubble.offsetHeight; // trigger reflow
+                    bubble.style.animation = 'bubblePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+                }
+
+                // Reset to default after 3 seconds
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(function() {
+                    speechText.textContent = 'Hey! Buy my tee!';
+                }, 3000);
+            });
         })();
 
         // --- Access Code Gate ---
