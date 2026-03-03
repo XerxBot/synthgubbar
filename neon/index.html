@@ -527,16 +527,18 @@
             flex-direction: row;
             align-items: flex-end;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
         }
 
-        /* Pixel character container */
+        /* Pixel character container — sized to match the box-shadow sprite */
         .pixel-guy {
             position: relative;
             transform: translateX(-120vw);
             cursor: pointer;
             flex-shrink: 0;
+            width: 90px;
+            height: 96px;
         }
 
         .pixel-guy.run-in {
@@ -1163,12 +1165,12 @@
          ========================================== -->
     <section class="merch-section" id="merch-section">
         <div class="merch-scene">
-            <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="pixel-guy" id="pixel-guy">
+            <div class="pixel-guy" id="pixel-guy">
                 <div class="speech-bubble">
                     <span class="speech-text">Hey! Buy my tee!</span>
                 </div>
                 <div class="pixel-sprite"></div>
-            </a>
+            </div>
             <div class="merch-cta" id="merch-cta">
                 <a href="https://shop.synthgubbar.com/" target="_blank" rel="noopener" class="merch-cta-link">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -1422,8 +1424,7 @@
             var lastQuote = -1;
             var clickTimer = null;
 
-            pixelGuy.addEventListener('click', function(e) {
-                e.preventDefault();
+            pixelGuy.addEventListener('click', function() {
                 if (!speechText) return;
 
                 // Pick a random quote (avoid repeating the same one)
