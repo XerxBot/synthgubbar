@@ -111,12 +111,12 @@
         }
 
         .hero-title {
-            font-size: min(8vw, 5rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 0.04em;
             line-height: 1;
-            overflow-wrap: break-word;
+            white-space: nowrap;
             word-break: break-word;
             animation: titlePulse 4s ease-in-out infinite;
         }
