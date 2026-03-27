@@ -70,8 +70,10 @@ The Neon Overdrive game link points to `play.synthgubbar.com` (subdomain setup p
 
 ## Merch Shop
 
-- **Live shop:** https://shop.synthgubbar.com/ (coming soon)
-- **On-site promo:** Pixel art character in the merch section runs in and says "Hey! Buy my tee!" — clickable for funny random quotes
+- **Live shop:** https://shop.synthgubbar.com/
+- **Launch date:** April 12, 2026 — countdown visible in the merch section on the main site
+- **On-site promo:** Pixel art character runs in, shows countdown bubble, clickable for funny random quotes
+- Shop link is active in both the merch section and footer
 - Fulfillment via [Spreadshirt](https://www.spreadshirt.com/) (do NOT expose to customers)
 
 ## Fonts
