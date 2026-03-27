@@ -763,6 +763,80 @@
         }
 
         /* ============================================
+           SHOP LAUNCH COUNTDOWN
+           ============================================ */
+        .merch-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .shop-launch-wrap {
+            text-align: center;
+        }
+
+        .shop-launch-label {
+            font-family: 'Audiowide', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: #4a3858;
+            margin-bottom: 0.4rem;
+        }
+
+        .shop-launch-date {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 700;
+            color: #d4a574;
+            text-shadow: 0 0 20px rgba(212, 165, 116, 0.4);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .shop-countdown {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 52px;
+        }
+
+        .countdown-num {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-weight: 700;
+            color: #e0d0e8;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(180, 120, 220, 0.4);
+        }
+
+        .countdown-lbl {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #4a3858;
+            margin-top: 0.3rem;
+        }
+
+        .countdown-sep {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: #2a1838;
+            margin-bottom: 0.6rem;
+        }
+
+        /* ============================================
            FOOTER
            ============================================ */
         .site-footer {
@@ -1113,17 +1187,45 @@
          MERCH — PIXEL CHARACTER
          ========================================== -->
     <section class="merch-section" id="merch-section">
-        <div class="merch-scene">
-            <div class="pixel-guy" id="pixel-guy">
-                <div class="speech-bubble">
-                    <span class="speech-text">Shop coming soon!</span>
+        <div class="merch-inner">
+            <div class="shop-launch-wrap">
+                <div class="shop-launch-label">Shop opens</div>
+                <div class="shop-launch-date">April 12</div>
+                <div class="shop-countdown">
+                    <div class="countdown-unit">
+                        <span class="countdown-num" id="cd-days">--</span>
+                        <span class="countdown-lbl">days</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="countdown-num" id="cd-hours">--</span>
+                        <span class="countdown-lbl">hrs</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="countdown-num" id="cd-mins">--</span>
+                        <span class="countdown-lbl">min</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-unit">
+                        <span class="countdown-num" id="cd-secs">--</span>
+                        <span class="countdown-lbl">sec</span>
+                    </div>
                 </div>
-                <div class="pixel-sprite"></div>
             </div>
-            <div class="merch-cta" id="merch-cta">
-                <span class="merch-cta-link" style="pointer-events: none; opacity: 0.6;">
-                    Coming Soon
-                </span>
+            <div class="merch-scene">
+                <div class="pixel-guy" id="pixel-guy">
+                    <div class="speech-bubble">
+                        <span class="speech-text">Opens April 12!</span>
+                    </div>
+                    <div class="pixel-sprite"></div>
+                </div>
+                <div class="merch-cta" id="merch-cta">
+                    <a href="https://shop.synthgubbar.com" target="_blank" rel="noopener" class="merch-cta-link">
+                        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        Visit Shop
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1146,10 +1248,10 @@
                 <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
                 Facebook
             </a>
-            <span class="footer-link footer-link--shop" style="opacity: 0.4; pointer-events: none;">
+            <a href="https://shop.synthgubbar.com" target="_blank" rel="noopener" class="footer-link footer-link--shop">
                 <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                Shop (Soon)
-            </span>
+                Shop
+            </a>
         </div>
         <div class="footer-line">&copy; 2025 Jajjo Records. All rights reserved.</div>
     </footer>
@@ -1361,7 +1463,7 @@
             // Click quotes
             var quotes = [
                 'Oh, that tickles!',
-                'Shop coming soon!',
+                'Opens April 12!',
                 'Looking good, human!',
                 'I only wear synthwave',
                 'Stop poking me!',
@@ -1397,9 +1499,35 @@
                 // Reset to default after 3 seconds
                 clearTimeout(clickTimer);
                 clickTimer = setTimeout(function() {
-                    speechText.textContent = 'Shop coming soon!';
+                    speechText.textContent = 'Opens April 12!';
                 }, 3000);
             });
+        })();
+
+        // --- Shop countdown to April 12, 2026 ---
+        (function() {
+            var target = new Date('2026-04-12T00:00:00');
+            var daysEl = document.getElementById('cd-days');
+            var hoursEl = document.getElementById('cd-hours');
+            var minsEl = document.getElementById('cd-mins');
+            var secsEl = document.getElementById('cd-secs');
+            if (!daysEl) return;
+            function pad(n) { return n < 10 ? '0' + n : '' + n; }
+            function tick() {
+                var diff = target - new Date();
+                if (diff <= 0) {
+                    daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
+                    return;
+                }
+                daysEl.textContent = pad(Math.floor(diff / 86400000));
+                diff %= 86400000;
+                hoursEl.textContent = pad(Math.floor(diff / 3600000));
+                diff %= 3600000;
+                minsEl.textContent = pad(Math.floor(diff / 60000));
+                secsEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+            }
+            tick();
+            setInterval(tick, 1000);
         })();
 
     </script>
