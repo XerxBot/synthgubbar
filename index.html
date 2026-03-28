@@ -837,6 +837,228 @@
         }
 
         /* ============================================
+           ENTRY OVERLAY — Limited Time Shop
+           ============================================ */
+        .entry-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: rgba(6, 5, 10, 0.88);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            animation: entryOverlayIn 0.5s ease both;
+        }
+
+        .entry-overlay.closing {
+            animation: entryOverlayOut 0.4s ease forwards;
+            pointer-events: none;
+        }
+
+        @keyframes entryOverlayIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes entryOverlayOut {
+            to { opacity: 0; }
+        }
+
+        .entry-scanlines {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.12) 2px,
+                rgba(0, 0, 0, 0.12) 4px
+            );
+            pointer-events: none;
+        }
+
+        .entry-box {
+            position: relative;
+            background: #0d0914;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 4px;
+            padding: 2.5rem 2.5rem 1.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 80px rgba(212, 165, 116, 0.07), inset 0 0 60px rgba(0,0,0,0.3);
+            animation: entryBoxIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s both;
+        }
+
+        @keyframes entryBoxIn {
+            from { opacity: 0; transform: translateY(24px) scale(0.97); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .entry-badge {
+            display: inline-block;
+            font-family: 'Audiowide', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: #d4a574;
+            border: 1px solid rgba(212, 165, 116, 0.25);
+            padding: 0.35rem 0.9rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .entry-headline {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(2rem, 8vw, 2.8rem);
+            font-weight: 700;
+            color: #e0d0e8;
+            margin: 0 0 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            animation: entryGlitch 5s infinite;
+        }
+
+        @keyframes entryGlitch {
+            0%, 86%, 100% { transform: none; text-shadow: 0 0 30px rgba(212, 165, 116, 0.35); }
+            87% { transform: skew(-1.5deg); text-shadow: -3px 0 #ff4488, 3px 0 #44ffee; }
+            88% { transform: skew(0.5deg) scaleX(1.01); text-shadow: 2px 0 #ff4488, -2px 0 #44ffee; }
+            89% { transform: none; text-shadow: 0 0 30px rgba(212, 165, 116, 0.35); }
+            90% { transform: skew(-0.5deg); text-shadow: -1px 0 #ff4488, 1px 0 #44ffee; }
+            91% { transform: none; text-shadow: 0 0 30px rgba(212, 165, 116, 0.35); }
+        }
+
+        .entry-sub {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #4a3858;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin: 0 0 1.5rem;
+        }
+
+        .entry-countdown {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-cd-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 55px;
+        }
+
+        .entry-cd-num {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 700;
+            color: #e0d0e8;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(180, 120, 220, 0.5);
+        }
+
+        .entry-cd-lbl {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #3a2848;
+            margin-top: 0.25rem;
+        }
+
+        .entry-cd-sep {
+            font-family: 'Audiowide', monospace;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            color: #2a1838;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-date {
+            font-family: 'Audiowide', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: #d4a574;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .entry-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .entry-shop-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(160, 120, 72, 0.08));
+            border: 1px solid rgba(212, 165, 116, 0.35);
+            border-radius: 50px;
+            color: #d4a574;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .entry-shop-btn:hover {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.26), rgba(160, 120, 72, 0.16));
+            border-color: rgba(212, 165, 116, 0.65);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.18);
+        }
+
+        .entry-close-btn {
+            background: none;
+            border: none;
+            color: #3a2848;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            padding: 0.3rem;
+        }
+
+        .entry-close-btn:hover { color: #9a88a8; }
+
+        .entry-progress {
+            height: 1px;
+            background: rgba(42, 24, 56, 0.4);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+
+        .entry-progress-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(212, 165, 116, 0.5), rgba(180, 100, 220, 0.4));
+            transform-origin: left;
+            animation: entryProgress 8s linear forwards;
+        }
+
+        @keyframes entryProgress {
+            from { transform: scaleX(1); }
+            to { transform: scaleX(0); }
+        }
+
+        /* ============================================
            FOOTER
            ============================================ */
         .site-footer {
@@ -983,6 +1205,45 @@
     </style>
 </head>
 <body>
+    <!-- ==========================================
+         ENTRY OVERLAY — Limited Time Shop
+         ========================================== -->
+    <div class="entry-overlay" id="entry-overlay">
+        <div class="entry-scanlines"></div>
+        <div class="entry-box">
+            <div class="entry-badge">Limited Drop</div>
+            <h2 class="entry-headline">Last Chance</h2>
+            <p class="entry-sub">The shop closes in</p>
+            <div class="entry-countdown">
+                <div class="entry-cd-unit">
+                    <span class="entry-cd-num" id="ecd-days">--</span>
+                    <span class="entry-cd-lbl">days</span>
+                </div>
+                <div class="entry-cd-sep">:</div>
+                <div class="entry-cd-unit">
+                    <span class="entry-cd-num" id="ecd-hours">--</span>
+                    <span class="entry-cd-lbl">hrs</span>
+                </div>
+                <div class="entry-cd-sep">:</div>
+                <div class="entry-cd-unit">
+                    <span class="entry-cd-num" id="ecd-mins">--</span>
+                    <span class="entry-cd-lbl">min</span>
+                </div>
+                <div class="entry-cd-sep">:</div>
+                <div class="entry-cd-unit">
+                    <span class="entry-cd-num" id="ecd-secs">--</span>
+                    <span class="entry-cd-lbl">sec</span>
+                </div>
+            </div>
+            <div class="entry-date">April 12 · 2026</div>
+            <div class="entry-actions">
+                <a href="https://shop.synthgubbar.com" target="_blank" rel="noopener" class="entry-shop-btn">Shop Now</a>
+                <button class="entry-close-btn" id="entry-close">Maybe later</button>
+            </div>
+            <div class="entry-progress"><div class="entry-progress-fill"></div></div>
+        </div>
+    </div>
+
     <div class="scanlines"></div>
     <div class="vhs-flicker"></div>
 
@@ -1502,6 +1763,47 @@
                     speechText.textContent = 'Order before April 12!';
                 }, 3000);
             });
+        })();
+
+        // --- Entry overlay (limited time shop) ---
+        (function() {
+            var overlay = document.getElementById('entry-overlay');
+            var closeBtn = document.getElementById('entry-close');
+            if (!overlay) return;
+
+            if (sessionStorage.getItem('shop-overlay-seen')) {
+                overlay.style.display = 'none';
+                return;
+            }
+
+            var target = new Date('2026-04-12T00:00:00');
+            var edEl = document.getElementById('ecd-days');
+            var ehEl = document.getElementById('ecd-hours');
+            var emEl = document.getElementById('ecd-mins');
+            var esEl = document.getElementById('ecd-secs');
+            function pad(n) { return n < 10 ? '0' + n : '' + n; }
+            function tickEntry() {
+                var diff = target - new Date();
+                if (diff <= 0) { edEl.textContent = ehEl.textContent = emEl.textContent = esEl.textContent = '00'; return; }
+                edEl.textContent = pad(Math.floor(diff / 86400000)); diff %= 86400000;
+                ehEl.textContent = pad(Math.floor(diff / 3600000)); diff %= 3600000;
+                emEl.textContent = pad(Math.floor(diff / 60000));
+                esEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+            }
+            tickEntry();
+            var entryInterval = setInterval(tickEntry, 1000);
+
+            function dismiss() {
+                overlay.classList.add('closing');
+                sessionStorage.setItem('shop-overlay-seen', '1');
+                clearInterval(entryInterval);
+                setTimeout(function() { overlay.style.display = 'none'; }, 400);
+            }
+
+            var autoTimer = setTimeout(dismiss, 8000);
+
+            closeBtn.addEventListener('click', function() { clearTimeout(autoTimer); dismiss(); });
+            overlay.addEventListener('click', function(e) { if (e.target === overlay) { clearTimeout(autoTimer); dismiss(); } });
         })();
 
         // --- Shop countdown to April 12, 2026 ---
